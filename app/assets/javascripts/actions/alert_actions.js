@@ -48,6 +48,35 @@ export const fetchAlerts = (campaignSlug) => dispatch => {
   );
 };
 
+const fetchAdminAlertsPromise = () => {
+  return new Promise((res, rej) => {
+    return $.ajax({
+      type: 'GET',
+      url: `/alerts_list.json`,
+      success(data) {
+        return res(data);
+      }
+    })
+    .fail((obj) => {
+      logErrorMessage(obj);
+      return rej(obj);
+    });
+  });
+};
+
+export const fetchAdminAlerts = () => dispatch => {
+  return (
+    fetchAdminAlertsPromise()
+      .then(data => {
+        dispatch({
+          type: types.RECEIVE_ALERTS,
+          data
+        });
+      })
+      .catch(response => (dispatch({ type: types.API_FAIL, data: response })))
+  );
+};
+
 export const sortAlerts = key => ({ type: types.SORT_ALERTS, key: key });
 
 export const filterAlerts = selectedFilters => ({ type: types.FILTER_ALERTS, selectedFilters: selectedFilters });

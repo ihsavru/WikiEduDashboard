@@ -5,12 +5,21 @@ class AlertsListController < ApplicationController
   layout 'admin'
   before_action :check_user_auth
 
-  def index
-    @alerts = Alert.order(id: :desc).first(100)
-  end
+  #def index
+  #  @alerts = Alert.order(id: :desc).first(100)
+  #end
 
   def show
     @alert = Alert.find(params[:id])
+  end
+
+  def index
+    respond_to do |format|
+      format.html { render }
+      format.json do
+        @alert = Alert.order(id: :desc).first(100)
+      end
+    end
   end
 
   private

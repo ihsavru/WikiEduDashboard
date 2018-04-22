@@ -25,6 +25,7 @@ import StudentsHandler from '../components/students/students_handler.jsx';
 import ArticlesHandler from '../components/articles/articles_handler.jsx';
 import UploadsHandler from '../components/uploads/uploads_handler.jsx';
 import AlertsHandler from '../components/alerts/alerts_handler.jsx';
+import AdminAlertsHandler from '../components/admin/admin_alerts_handler.jsx';
 
 import RecentActivityHandler from '../components/activity/recent_activity_handler.jsx';
 import DidYouKnowHandler from '../components/activity/did_you_know_handler.jsx';
@@ -108,6 +109,7 @@ const routes = (
     </Route>
     <Route path="users/:username" component={ContributionStats} />
     <Route path="campaigns/:campaign_slug/alerts" component={AlertsHandler} />
+    <Route path="alerts_list" component={AdminAlertsHandler} />
     <Route path="settings" component={SettingsHandler} />
   </Route>
 );

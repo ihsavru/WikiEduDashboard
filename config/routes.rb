@@ -316,7 +316,7 @@ Rails.application.routes.draw do
   end
 
   resources :admin
-  resources :alerts_list
+  resources :alerts_list, controller: :alerts_list
   resources :settings, only: [:index]
 
   require 'sidekiq/web'

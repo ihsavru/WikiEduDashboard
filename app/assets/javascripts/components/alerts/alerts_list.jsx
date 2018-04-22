@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import List from '../common/list.jsx';
 import Alert from './alert.jsx';
 
-const AlertsList = ({ alerts, sortBy }) => {
+const AlertsList = ({ alerts, sortBy, adminAlert }) => {
   const elements = alerts.map(alert => {
-    return <Alert alert={alert} key={alert.id} />;
+    return <Alert alert={alert} key={alert.id} adminAlert={adminAlert} />;
   });
 
   const keys = {
@@ -28,8 +28,15 @@ const AlertsList = ({ alerts, sortBy }) => {
     article: {
       label: I18n.t('campaign.alert_article'),
       desktop_only: false
-    }
+    },
   };
+
+  if(adminAlert) {
+    keys.resolve = {
+      label: "Resolve",
+      desktop_only: false
+    };
+  }
 
   return (
     <List
@@ -43,7 +50,8 @@ const AlertsList = ({ alerts, sortBy }) => {
 };
 
 AlertsList.propTypes = {
-  alerts: PropTypes.array
+  alerts: PropTypes.array,
+  adminAlert: PropTypes.bool,
 };
 
 export default AlertsList;
