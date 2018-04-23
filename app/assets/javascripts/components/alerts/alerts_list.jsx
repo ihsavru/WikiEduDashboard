@@ -31,7 +31,7 @@ const AlertsList = ({ alerts, sortBy, adminAlert }) => {
     },
   };
 
-  if(adminAlert) {
+  if (adminAlert) {
     keys.resolve = {
       label: "Resolve",
       desktop_only: false

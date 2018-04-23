@@ -10,4 +10,5 @@ json.alerts @alert do |alert|
   json.article alert.article&.title
   json.article_url alert.article&.url
   json.resolved alert.resolved
+  json.resolvable alert.resolvable?
 end

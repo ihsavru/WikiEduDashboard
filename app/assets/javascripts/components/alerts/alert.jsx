@@ -3,22 +3,20 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const Alert = ({ alert, adminAlert }) => {
-  if(adminAlert) {
+  if (adminAlert) {
     let resolveText;
     let resolveButton;
-    if(alert.resolved) {
+    if (alert.resolved) {
       resolveText = '✓';
     }
-    if(alert.resolvable) {
+    if (alert.resolvable) {
       resolveButton = (
-        <form method="put">
-          <button className="button small danger dark">Resolve</button>
+        <form method="put" action="">
+          <input type="button" value="Resolve" className="button small danger dark" />
         </form>
       );
     }
-    var resolve = (
-      <td className="desktop-only-tc">{resolveText} {resolveButton}</td>
-    );
+    var resolve = <td className="desktop-only-tc">{resolveText} {resolveButton}</td>;
   }
   return (
     <tr className="alert">
