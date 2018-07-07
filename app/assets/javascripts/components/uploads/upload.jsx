@@ -24,6 +24,12 @@ const Upload = createReactClass({
     this.setImageFile();
   },
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.state.imageFile) {
+      this.setState({ imageFile: nextProps.thumburl });
+    }
+  },
+
   setImageFile() {
     let imageFile = this.props.upload.thumburl;
     if (this.props.upload.deleted) {

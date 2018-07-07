@@ -29,7 +29,11 @@ const UploadList = createReactClass({
         if (nextProps.updatedUploads[upload.id] && nextProps.updatedUploads[upload.id].imageinfo[0].extmetadata.Credit) {
           credit = nextProps.updatedUploads[upload.id].imageinfo[0].extmetadata.Credit.value;
         }
-        return <Upload upload={upload} key={upload.id} credit={credit} linkUsername={true} />;
+        let thumburl;
+        if (!upload.thumburl && nextProps.updatedUploads[upload.id]) {
+          thumburl = nextProps.updatedUploads[upload.id].imageinfo[0].thumburl;
+        }
+        return <Upload upload={upload} key={upload.id} credit={credit} thumburl={thumburl} linkUsername={true} />;
       });
     } else {
       elements = (<div className="none"><p>{I18n.t('courses_generic.uploads_none')}</p></div>);
